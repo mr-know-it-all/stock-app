@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Chart from './chart'
 
 type Props = {
     symbol: string,
@@ -37,7 +38,7 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
     else if(!loading && companyStock) {
         return (
             <div>
-                Chart
+                <Chart data={companyStock} />
             </div>
         )
     } else return <p>[Chart] Select a company</p>
