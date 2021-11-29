@@ -23,10 +23,10 @@ const query = ({ term }: QueryRequestType): Promise<QueryResponseType> => {
 
     const result: Array<CompanyInfoType> = companies.filter(company => {
         return (
-            company.symbol.toLowerCase().indexOf(term) !== -1 ||
-            company.displaySymbol.toLowerCase().indexOf(term) !== -1 ||
-            company.description.toLowerCase().indexOf(term) !== -1 ||
-            company.type.toLowerCase().indexOf(term) !== -1 
+            company.symbol.toLowerCase().indexOf(term.toLowerCase()) !== -1 ||
+            company.displaySymbol.toLowerCase().indexOf(term.toLowerCase()) !== -1 ||
+            company.description.toLowerCase().indexOf(term.toLowerCase()) !== -1 ||
+            company.type.toLowerCase().indexOf(term.toLowerCase()) !== -1 
         )
     });
 
@@ -38,7 +38,7 @@ const query = ({ term }: QueryRequestType): Promise<QueryResponseType> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(response);
-        }, 100);
+        }, 2000);
     })
 };
 
@@ -84,11 +84,11 @@ const companyProfile = ({ symbol }: CompanyProfileRequestType): Promise<CompanyP
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(result);
-        }, 100)
+        }, 2000)
     });
 };
 
-const stockInfoDaily = ({ symbol, from, to }: StockInfoRequestType): Promise<StockInfoResponseType> => {
+const stockInfo = ({ symbol, from, to, type = 'daily' }: StockInfoRequestType): Promise<StockInfoResponseType> => {
     const a = new Date(from);
     const b = new Date(to);
     const day = 1000 * 60 * 60 * 24;
@@ -116,14 +116,14 @@ const stockInfoDaily = ({ symbol, from, to }: StockInfoRequestType): Promise<Sto
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(result);
-        }, 100);
+        }, 2000);
     })
 };
 
 export default {
     query,
     companyProfile,
-    stockInfoDaily
+    stockInfo
 };
 
 

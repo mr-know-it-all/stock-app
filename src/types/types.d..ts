@@ -45,7 +45,8 @@ type CompanyProfileResponseType = {
 type StockInfoRequestType = {
     symbol: string,
     from: number,
-    to: number
+    to: number,
+    type: string
 };
 type StockInfoResponseType = {
     data: Array<StockType> | null
