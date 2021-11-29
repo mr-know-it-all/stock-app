@@ -31,18 +31,45 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
             console.error(error);
             setLoading(false);
         })
-    }, [symbol, interval]);
+    }, [symbol, getStockInfo]);
 
-    console.log('companystock', companyStock)
+    const setCustomInterval = () => {
+        setLoading(true);
+        getStockInfo({ symbol, from: interval.from, to: interval.to, type: 'daily' }).then(response => {
+            setCompanyStock(response.data); 
+            setLoading(false);
+        }).catch(error => {
+            console.error(error);
+            setLoading(false);
+        })
+    };
+    
+    return (
+        <figure className="company-stock-chart">
+            {loading && <p>Loading...</p>}
+            {companyStock && (
+                <>
+                <label htmlFor="interval-from">From</label>
+                <input type="date" id="interval-from" onChange={
+                    event => {
+                        const value = new Date(event.target.value);
+                        setInterval(state => ({ ...state, from: value.getTime() }));
+                    }
+                } />
+                    <label htmlFor="interval-from">Tom</label>
+                <input type="date" id="interval-to" onChange={
+                    event => {
+                        const value = new Date(event.target.value);
+                        setInterval(state => ({ ...state, to: value.getTime() }));
+                    }
+                } />
+                <button onClick={setCustomInterval}>Set interval</button>
+                </>
+            )}
 
-    if(loading) return <p>LOADING...</p>
-    else if(!loading && companyStock) {
-        return (
-            <figure className="company-stock-chart">
-                <Chart data={companyStock} />
-            </figure>
-        )
-    } else return <p>[Chart] Select a company</p>
+            {companyStock && !loading && <Chart data={companyStock} />}
+        </figure>
+    );
 }
 
 export default CompanyStockChart;
