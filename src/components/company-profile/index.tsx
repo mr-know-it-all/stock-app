@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './style.css';
 
 type Props = {
     symbol: string,
@@ -23,17 +24,17 @@ const CompanyProfile = ({ symbol, getCompanyProfile }: Props) => {
             console.error(error);
             setLoading(false);
         })
-    }, [symbol])
+    }, [symbol, getCompanyProfile])
 
     if(loading) return <p>LOADING...</p>
     else if(!loading && companyProfile) {
         return (
-            <div>
-                <div>{companyProfile.description}</div>
-                <div>{companyProfile.country}</div>
-                <div>{companyProfile.state}</div>
-                <div>{companyProfile.city}</div>
-            </div>
+            <article className="company-profile">
+                <div className="company-profile-item">{companyProfile.description}</div>
+                <div className="company-profile-item">{companyProfile.country}</div>
+                <div className="company-profile-item">{companyProfile.state}</div>
+                <div className="company-profile-item">{companyProfile.city}</div>
+            </article>
         )
     } else return <p>[Profile] Select a company</p>
 }

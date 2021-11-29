@@ -1,0 +1,19 @@
+.search-companies {
+    background-color: red !important;
+}
+
+.search-companies > label {
+    background-color: white;
+}
+
+.search-companies > input {
+    background-color: white;
+}
+
+.search-companies > .search-companies-result {
+    background-color: blue;
+}
+
+.search-companies > .search-companies-result > .search-companies-result-item {
+    color: red;
+}

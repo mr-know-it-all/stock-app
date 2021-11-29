@@ -1,0 +1,8 @@
+.company-profile {
+    background-color: white;
+
+}
+
+.company-profile > .company-profile-item {
+    background-color: white;
+}

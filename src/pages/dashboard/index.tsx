@@ -20,7 +20,7 @@ const Dashboard = () => {
     };
 
     return (
-        <section>
+        <section className="dashboard-page">
             <PageHeader />
             <PageDescripton providerName={Api.providerName} />
             <SearchCompanies
@@ -28,9 +28,7 @@ const Dashboard = () => {
                 selectCompany={setSelectedCompany}
                 clearSelectedCompany={clearCompany}
             />
-            
             <CompanyProfile symbol={symbol} getCompanyProfile={getCompanyProfile} />
-
             <CompanyStockChart symbol={symbol} getStockInfo={getStockInfo} />
         </section>
     )

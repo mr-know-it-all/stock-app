@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Chart from './chart'
+import Chart from './chart';
+import './style.css';
 
 type Props = {
     symbol: string,
@@ -37,9 +38,9 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
     if(loading) return <p>LOADING...</p>
     else if(!loading && companyStock) {
         return (
-            <div>
+            <figure className="company-stock-chart">
                 <Chart data={companyStock} />
-            </div>
+            </figure>
         )
     } else return <p>[Chart] Select a company</p>
 }

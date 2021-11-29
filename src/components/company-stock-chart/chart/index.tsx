@@ -39,7 +39,6 @@ const buildChartData = (data: Array<StockType>) => {
   const averageDataset = [];
 
   for(let item of data) {
-
     labels.push(new Date(item.date).toLocaleDateString());
     openDataset.push(item.info.open);
     closeDataset.push(item.info.close);
