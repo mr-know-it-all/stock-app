@@ -3,6 +3,8 @@ import SearchCompanies from "../../components/search-companies";
 import CompanyProfile from '../../components/company-profile';
 import CompanyStockChart from '../../components/company-stock-chart';
 import Api from '../../api';
+import PageHeader from '../../components/page-header';
+import PageDescripton from '../../components/page-description';
 
 
 const Dashboard = () => {
@@ -18,7 +20,9 @@ const Dashboard = () => {
     };
 
     return (
-        <>
+        <section>
+            <PageHeader />
+            <PageDescripton providerName={Api.providerName} />
             <SearchCompanies
                 getAvailableCompanies={getAvailableCompanies}
                 selectCompany={setSelectedCompany}
@@ -28,7 +32,7 @@ const Dashboard = () => {
             <CompanyProfile symbol={symbol} getCompanyProfile={getCompanyProfile} />
 
             <CompanyStockChart symbol={symbol} getStockInfo={getStockInfo} />
-        </>
+        </section>
     )
 };
 

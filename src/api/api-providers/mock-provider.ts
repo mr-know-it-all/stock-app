@@ -120,11 +120,13 @@ const stockInfo = ({ symbol, from, to, type = 'daily' }: StockInfoRequestType): 
     })
 };
 
-export default {
+const MockProvider = {
+    name: 'Mock Provider',
     query,
     companyProfile,
     stockInfo
 };
 
+export default MockProvider;
 
   
