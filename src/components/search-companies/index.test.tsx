@@ -37,7 +37,7 @@ test('SearchCompanies - renders component', () => {
 });
 
 
-test('SearchCompanies - triggers companies search, displays results, selects company, and clears it', async () => {
+test('SearchCompanies - triggers companies search, displays results, selects company, then clears the selected company', async () => {
     const availableCompanies: Array<CompanyInfoType> = [
         {
             "description": "APPLE INC",
@@ -84,6 +84,11 @@ test('SearchCompanies - triggers companies search, displays results, selects com
 
         searchResultItems && searchResultItems[0] && fireEvent.click(searchResultItems[0]);
         expect(spies.selectCompany).toBeCalledWith(availableCompanies[0]);
+    });
+
+    await waitFor(() => {
+        searchInput && fireEvent.change(searchInput, { target: { value: '' } });
+        expect(spies.clearSelectedCompany).toBeCalledTimes(2);
     });
 });
 
