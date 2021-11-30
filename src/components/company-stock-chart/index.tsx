@@ -16,8 +16,8 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
     const [error, setError] = useState(false);
     const [companyStock, setCompanyStock] = useState<Array<StockType> | null>(null);
     const [interval, setInterval] = useState({
-        from: Date.now(),
-        to: Date.now() + 10 * day
+        from: Date.now() - 15 * day,
+        to: Date.now() - 5 * day
     });
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
         }
         
         setLoading(true);
-        getStockInfo({ symbol, from: interval.from, to: interval.to, type: 'daily' }).then(response => {
+        getStockInfo({ symbol, from: interval.from, to: interval.to, type: 'D' }).then(response => {
             setCompanyStock(response.data); 
             setLoading(false);
         }).catch(error => {
@@ -41,7 +41,7 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
     const setCustomInterval = () => {
         setError(false);
         setLoading(true);
-        getStockInfo({ symbol, from: interval.from, to: interval.to, type: 'daily' }).then(response => {
+        getStockInfo({ symbol, from: interval.from, to: interval.to, type: 'D' }).then(response => {
             setCompanyStock(response.data); 
             setLoading(false);
         }).catch(error => {

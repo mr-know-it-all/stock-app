@@ -1,4 +1,5 @@
 import mockProvider from './api-providers/mock-provider';
+import finnhub from './api-providers/finnhub';
 
 type ApiType = {
     providerName: string,
@@ -7,7 +8,7 @@ type ApiType = {
     stockInfo: ({ symbol, from, to }: StockInfoRequestType) => Promise<StockInfoResponseType>
 }
 
-const Api = (provider = mockProvider): ApiType => {
+const Api = (provider = finnhub): ApiType => {
 
     return {
         providerName: provider.name,
