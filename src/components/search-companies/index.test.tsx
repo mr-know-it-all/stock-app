@@ -33,7 +33,7 @@ test('SearchCompanies - renders component', () => {
     expect(container.querySelector('.search-companies > label')).not.toBeEmptyDOMElement();
     expect(container.querySelector('.search-companies > input')).toBeDefined();
     expect(container.querySelector('.search-companies > label')?.textContent).toEqual(SEARCH_COMPANIES);
-    expect(container.querySelector('.search-companies-result')).toBeEmptyDOMElement();
+    expect(container.querySelector('.search-companies-result')).toBe(null);
 });
 
 
