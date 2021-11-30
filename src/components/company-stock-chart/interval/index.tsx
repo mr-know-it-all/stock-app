@@ -8,7 +8,7 @@ const Interval = ({
     setCustomInterval
 }: Props) => {
     return (
-        <fieldset className="char-component-interval">
+        <fieldset className="chart-component-interval">
             <label htmlFor="interval-from">From</label>
             <input type="date" id="interval-from" onChange={
                 event => {

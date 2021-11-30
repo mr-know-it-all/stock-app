@@ -46,6 +46,7 @@
     "@types/faker": "^5.5.9",
     "@types/lodash.debounce": "^4.0.6",
     "faker": "^5.5.3",
+    "jest-canvas-mock": "^2.3.1",
     "ramda": "^0.27.1"
   }
 }
