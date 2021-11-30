@@ -28,8 +28,11 @@ const Dashboard = () => {
                 selectCompany={setSelectedCompany}
                 clearSelectedCompany={clearCompany}
             />
-            <CompanyProfile symbol={symbol} getCompanyProfile={getCompanyProfile} />
-            <CompanyStockChart symbol={symbol} getStockInfo={getStockInfo} />
+
+            <section className="company-details">
+                <CompanyProfile symbol={symbol} getCompanyProfile={getCompanyProfile} />
+                <CompanyStockChart symbol={symbol} getStockInfo={getStockInfo} />
+            </section>
         </section>
     )
 };

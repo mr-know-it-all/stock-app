@@ -1,19 +1,61 @@
 .search-companies {
-    background-color: red !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color: #344CB7;
+    color: white;
 }
 
 .search-companies > label {
-    background-color: white;
+    margin: 0 10px;
 }
 
 .search-companies > input {
-    background-color: white;
+    margin: 0 10px;
+    border-radius: 2px;
 }
 
+.search-companies > .loading {
+    color: #577BC1;
+}
+.search-companies > .error {
+    color: red;
+}
+
+.search-companies > .loading,
+.search-companies > .error,
 .search-companies > .search-companies-result {
-    background-color: blue;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    background-color: #344CB7;
 }
 
 .search-companies > .search-companies-result > .search-companies-result-item {
-    color: red;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search-companies > .search-companies-result > .search-companies-result-item > span {
+  box-sizing: border-box;
+  padding: 0 5px;
+}
+
+.search-companies > .search-companies-result > .search-companies-result-item:first-child {
+    padding-top: 10px;
+    border-top: 1px solid #577BC1;
+}
+
+.search-companies > .search-companies-result > .search-companies-result-item:hover {
+    color: #577BC1;
 }

@@ -1,8 +1,18 @@
 .company-profile {
-    background-color: white;
-
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #000957;
+    color: white;
 }
 
-.company-profile > .company-profile-item {
-    background-color: white;
+.company-profile > .company-profile-data {
+   display: flex;
+  
+}
+
+.company-profile > .company-profile-data > .company-profile-item {
+    padding: 0 10px;
 }

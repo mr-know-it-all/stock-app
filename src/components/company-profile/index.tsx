@@ -38,10 +38,12 @@ const CompanyProfile = ({ symbol, getCompanyProfile }: Props) => {
         return (
             <article className="company-profile">
                 <h3>{COMPANY_PROFILE}</h3>
-                <div className="company-profile-item">{companyProfile.description}</div>
-                <div className="company-profile-item">{companyProfile.country}</div>
-                <div className="company-profile-item">{companyProfile.state}</div>
-                <div className="company-profile-item">{companyProfile.city}</div>
+                <div className="company-profile-data">
+                    <div className="company-profile-item">{companyProfile.description}</div>
+                    <div className="company-profile-item">{companyProfile.country}</div>
+                    <div className="company-profile-item">{companyProfile.state}</div>
+                    <div className="company-profile-item">{companyProfile.city}</div>
+                </div>
             </article>
         );
     }

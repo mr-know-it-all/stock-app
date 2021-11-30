@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import './style.css';
-import { SEARCH_COMPANIES, LOADING, ERROR } from '../../language/constants';
+import { SEARCH_COMPANIES, LOADING, ERROR, SEARCH } from '../../language/constants';
 
 type Props = {
     getAvailableCompanies: (term: string) => Promise<QueryResponseType>,
@@ -60,11 +60,18 @@ const SearchCompanies = ({
     return (
         <fieldset className="search-companies">
             <label htmlFor="search-companies">{SEARCH_COMPANIES}</label>
-            <input id="search-companies" type="text" value={term} onChange={onInputChange} />
+            <input
+                id="search-companies"
+                type="text"
+                value={term}
+                onChange={onInputChange}
+                placeholder={SEARCH}
+                autoComplete="off"
+            />
 
-            {loading && (<div>{LOADING}</div>)}
+            {loading && (<div className="loading">{LOADING}</div>)}
             {!loading && error && (<div className="error">{ERROR}</div>)}
-            {!loading && !error && (
+            {!loading && !error && companies.length > 0 && (
                 <div className="search-companies-result">
                     {companies.map(company => (
                         <div
@@ -72,8 +79,8 @@ const SearchCompanies = ({
                             className="search-companies-result-item"
                             onClick={onCompanyClick(company)}
                         >
-                            <div>{company.displaySymbol}</div>
-                            <div>{company.description}</div>
+                            <span>{company.displaySymbol}</span>
+                            <span>{company.description}</span>
                         </div>
                     ))}
                 </div>
