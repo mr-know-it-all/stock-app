@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import './style.css';
+import { LOADING, COMPANY_PROFILE, NO_COMPANY_SELECTED } from '../../language/constants';
 
 type Props = {
     symbol: string,
@@ -15,7 +16,7 @@ const CompanyProfile = ({ symbol, getCompanyProfile }: Props) => {
             setCompanyProfile(null);
             return;
         }
-
+        
         setLoading(true);
         getCompanyProfile(symbol).then(response => {
            setCompanyProfile(response.data); 
@@ -26,17 +27,18 @@ const CompanyProfile = ({ symbol, getCompanyProfile }: Props) => {
         })
     }, [symbol, getCompanyProfile])
 
-    if(loading) return <p>LOADING...</p>
+    if(loading) return <p className="loading">{LOADING}</p>
     else if(!loading && companyProfile) {
         return (
             <article className="company-profile">
+                <h3>{COMPANY_PROFILE}</h3>
                 <div className="company-profile-item">{companyProfile.description}</div>
                 <div className="company-profile-item">{companyProfile.country}</div>
                 <div className="company-profile-item">{companyProfile.state}</div>
                 <div className="company-profile-item">{companyProfile.city}</div>
             </article>
         )
-    } else return <p>[Profile] Select a company</p>
+    } else return <p className="company-profile-empty">{NO_COMPANY_SELECTED}</p>
 }
 
 export default CompanyProfile;

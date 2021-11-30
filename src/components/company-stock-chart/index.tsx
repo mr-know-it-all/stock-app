@@ -49,21 +49,21 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
             {loading && <p>Loading...</p>}
             {companyStock && (
                 <>
-                <label htmlFor="interval-from">From</label>
-                <input type="date" id="interval-from" onChange={
-                    event => {
-                        const value = new Date(event.target.value);
-                        setInterval(state => ({ ...state, from: value.getTime() }));
-                    }
-                } />
+                    <label htmlFor="interval-from">From</label>
+                    <input type="date" id="interval-from" onChange={
+                        event => {
+                            const value = new Date(event.target.value);
+                            setInterval(state => ({ ...state, from: value.getTime() }));
+                        }
+                    } />
                     <label htmlFor="interval-from">Tom</label>
-                <input type="date" id="interval-to" onChange={
-                    event => {
-                        const value = new Date(event.target.value);
-                        setInterval(state => ({ ...state, to: value.getTime() }));
-                    }
-                } />
-                <button onClick={setCustomInterval}>Set interval</button>
+                    <input type="date" id="interval-to" onChange={
+                        event => {
+                            const value = new Date(event.target.value);
+                            setInterval(state => ({ ...state, to: value.getTime() }));
+                        }
+                    } />
+                    <button onClick={setCustomInterval}>Set interval</button>
                 </>
             )}
 
