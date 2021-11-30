@@ -1,4 +1,5 @@
 import { FROM, TO } from '../../../language/constants'; 
+import './style.css';
 
 type Props = {
     updateInterval: (type: 'from' | 'to', value: Date) => void,
@@ -18,7 +19,7 @@ const Interval = ({
                     updateInterval('from', value);
                 }
             } />
-            <label htmlFor="interval-from">{TO}</label>
+            <label htmlFor="interval-to">{TO}</label>
             <input type="date" id="interval-to" onChange={
                 event => {
                     const value = new Date(event.target.value);
