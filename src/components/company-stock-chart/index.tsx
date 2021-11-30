@@ -60,7 +60,7 @@ const CompanyStockChart = ({ symbol, getStockInfo }: Props) => {
             {!loading && error && <p className="error">{ERROR}</p>}
             {companyStock && !loading && (
                 <>
-                    <Interval updateInterval={updateInterval} setCustomInterval={setCustomInterval} />
+                    <Interval updateInterval={updateInterval} from={interval.from} to={interval.to} setCustomInterval={setCustomInterval} />
                     <Chart data={companyStock} />
                 </>
             )}
