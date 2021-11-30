@@ -62,6 +62,6 @@ test('CompanyStockChart - renders component with selected company symbol', async
 
     await waitFor(() => {
         expect(container.querySelector('.company-stock-chart canvas')).not.toBe(null);
-        expect(container.querySelector('.company-stock-chart .chart-component-interval')).not.toBeEmptyDOMElement(null);
+        expect(container.querySelector('.company-stock-chart .chart-component-interval')).not.toBeEmptyDOMElement();
     });
 });
