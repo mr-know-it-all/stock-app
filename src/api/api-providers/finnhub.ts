@@ -92,7 +92,6 @@ const stockInfo = ({ symbol, from, to, type = 'D' }: StockInfoRequestType): Prom
             if(response.ok) {
                 const data = await response.json().catch(reject);
                 const transformedData = stockInfoAdaptor(data);
-                console.log(transformedData)
                 resolve(transformedData);
             }
         }).catch(reject);
@@ -100,7 +99,7 @@ const stockInfo = ({ symbol, from, to, type = 'D' }: StockInfoRequestType): Prom
 };
 
 const MockProvider = {
-    name: 'Mock Provider',
+    name: 'Finnhub Provider',
     query,
     companyProfile,
     stockInfo
