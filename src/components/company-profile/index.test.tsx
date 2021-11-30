@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import CompanyProfile from '.';
-import { COMPANY_PROFILE, NO_COMPANY_SELECTED } from '../../language/constants';
+import { COMPANY_PROFILE, NO_COMPANY_SELECTED, ERROR } from '../../language/constants';
 
 type SetupProps = {
     [key: string]: string | (() => Promise<never> | Promise<any>)
@@ -60,5 +60,17 @@ test('CompanyProfile - renders component with selected company symbol', async ()
         expect(profileItems[1]?.textContent).toEqual(companyProfileData.country);
         expect(profileItems[2]?.textContent).toEqual(companyProfileData.state);
         expect(profileItems[3]?.textContent).toEqual(companyProfileData.city);
+    });
+});
+
+test('CompanyProfile - renders component with error if call to getCompanyProfile fails', async () => {
+    const { container, spies } = setup({
+        symbol: 'APPL',
+        getCompanyProfile: () => Promise.reject({})
+    });
+    
+    await waitFor(() => {
+        expect(container.querySelector('.error')).not.toBeEmptyDOMElement();
+        expect(container.querySelector('.error')?.textContent).toEqual(ERROR);
     });
 });

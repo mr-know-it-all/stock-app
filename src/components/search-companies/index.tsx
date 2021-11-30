@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import debounce from 'lodash.debounce';
 import './style.css';
+import { SEARCH_COMPANIES, LOADING, ERROR } from '../../language/constants';
 
 type Props = {
     getAvailableCompanies: (term: string) => Promise<QueryResponseType>,
@@ -16,26 +17,30 @@ const SearchCompanies = ({
     const [companies, setCompanies] = useState<Array<CompanyInfoType>>([]);
     const [term, setTerm] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
-    const getCompaniesData = (term: string) => {
-        clearSelectedCompany();
-
-        if(term.trim().length === 0) {
-            setCompanies([]);
-            return;
+    const getCompaniesData = useMemo(() => (
+        (term: string) => {
+            clearSelectedCompany();
+            setError(false);
+    
+            if(term.trim().length === 0) {
+                setCompanies([]);
+                return;
+            }
+    
+            setLoading(true);
+            getAvailableCompanies(term).then(data => {
+                setCompanies(data.result);
+                setLoading(false);
+            }).catch((error) => {
+                setError(true);
+                setLoading(false);
+            });
         }
+    ), [clearSelectedCompany, getAvailableCompanies]);
 
-        setLoading(true);
-        getAvailableCompanies(term).then(data => {
-            setCompanies(data.result);
-            setLoading(false);
-        }).catch((error) => {
-            setLoading(false);
-            console.error(error);
-        });
-    };
-
-    const debouncedGetAvailableCompanies = useMemo(() => debounce(getCompaniesData, 300), []);
+    const debouncedGetAvailableCompanies = useMemo(() => debounce(getCompaniesData, 300), [getCompaniesData]);
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if(loading) return;
@@ -54,11 +59,12 @@ const SearchCompanies = ({
 
     return (
         <fieldset className="search-companies">
-            <label htmlFor="search-companies">Find company</label>
+            <label htmlFor="search-companies">{SEARCH_COMPANIES}</label>
             <input id="search-companies" type="text" value={term} onChange={onInputChange} />
 
-            {loading && (<div>LOADING...</div>)}
-            {!loading && (
+            {loading && (<div>{LOADING}</div>)}
+            {!loading && error && (<div className="error">{ERROR}</div>)}
+            {!loading && !error && (
                 <div className="search-companies-result">
                     {companies.map(company => (
                         <div
