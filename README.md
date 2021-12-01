@@ -26,6 +26,7 @@ After the usual
 git clone ^
 npm ci
 npm start
+npm test -- --coverage --watchAll=false
 ```
 Add a valid API key in /api/api-providers/finnhub.ts at line 1, if you want to use this provider. Otherwise, in api/index.ts use mockProvider:
 

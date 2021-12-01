@@ -23,7 +23,7 @@ const companyProfile = ({ symbol }: CompanyProfileRequestType): Promise<CompanyP
 
                 resolve({
                     data: {
-                        description: `${data.name} - ${data.exchange}`,
+                        description: data.name && data.exchange ? `${data.name} - ${data.exchange}` : '',
                         displaySymbol: data.ticker,
                         symbol: data.ticker,
                         type: "Common Stock",
