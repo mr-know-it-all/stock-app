@@ -9,8 +9,11 @@ This is a sketch of a stock web application.
 
 ## Design considerations
 The only page implemented is Dashboard page. It sends selected company symbol (company stock indentifier) and api methods to its subcomponents: SearchCompanies, CompanyProfile and CompanyStockChart. These subcomponents could be reused across a larger application.
+
 The company symbol is set in the SearchCompanies component.
+
 CompanyProfile and CompanyStock chart automatically fetch data when a company symbol is provided to them.
+
 Global types are declared under /types directory. As long as the request/response types are respected, any stock data provider can be added under /api/api-providers directory. A mechanism that cchanges the provider at runtime can be considered.
 
 ## Tech stack
