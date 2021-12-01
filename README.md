@@ -8,16 +8,17 @@ This is a sketch of a stock web application.
 - the stock data is displayed with daily intervals
 
 ## Design considerations
-The only page implemented is Dashboard page. It sends selected company symbol (company stock indentifier) and api methods to it's subcomponents: SearchCompanies, CompanyProfile and CompanyStockChart. These subcomponents could be reused across a larger application.
-The company symbol is set be the SearchCompanies component.
-CompanyProfile and CompanyStock chart autpmatically fetch data when a company symbol is provided to them.
-Global types are declared under /types directory. As long as the request / response types are respected, any stock data provider can be added under /api/api-providers directory. A mechanism that cchanges the provider at runtime can be considered.
+The only page implemented is Dashboard page. It sends selected company symbol (company stock indentifier) and api methods to its subcomponents: SearchCompanies, CompanyProfile and CompanyStockChart. These subcomponents could be reused across a larger application.
+The company symbol is set in the SearchCompanies component.
+CompanyProfile and CompanyStock chart automatically fetch data when a company symbol is provided to them.
+Global types are declared under /types directory. As long as the request/response types are respected, any stock data provider can be added under /api/api-providers directory. A mechanism that cchanges the provider at runtime can be considered.
 
 ## Tech stack
 - Basic [CRA](https://create-react-app.dev/) with TypeScript boilerplate
 - Default [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit tests
 - [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2) 
 - [lodash.debounce](https://lodash.com/docs/4.17.15#debounce)
+- Data prvider [Finnhub](https://finnhub.io/)
 
 ## How to use
 After the usual
