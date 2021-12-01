@@ -7,3 +7,4 @@ export const SEARCH_COMPANIES = 'Search for a company:';
 export const SEARCH = 'Search';
 export const FROM = 'From';
 export const TO = 'To';
+export const SET_INTERVAL = 'Set interval';

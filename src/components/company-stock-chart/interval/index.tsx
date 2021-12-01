@@ -1,4 +1,4 @@
-import { FROM, TO } from '../../../language/constants'; 
+import { FROM, TO, SET_INTERVAL } from '../../../language/constants'; 
 import './style.css';
 
 type Props = {
@@ -33,7 +33,7 @@ const Interval = ({
                     updateInterval('to', value);
                 }
             } />
-            <button id="interval-submit" onClick={setCustomInterval}>Set interval</button>
+            <button id="interval-submit" onClick={setCustomInterval}>{SET_INTERVAL}</button>
         </fieldset>
     )
 };

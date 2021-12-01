@@ -7,7 +7,7 @@ type SetupProps = {
 }
 export const setup = (props?: SetupProps) => {
     const spies = {
-        getStockInfo: jest.fn()
+        getStockInfo: jest.fn(() => Promise.resolve({ data: []}))
     };
     const { container } = render(
         <CompanyStockChart
@@ -52,16 +52,36 @@ test('CompanyStockChart - renders component with selected company symbol', async
                 volume: 500
             }
         }
-    ] 
+    ];
+
+    const getStockInfo = jest.fn(() => Promise.resolve({ data: stockData }));
+
     const { container, spies } = setup({
         symbol: 'GOOG',
-        getStockInfo: () => Promise.resolve({ data: stockData })
+        getStockInfo
     });
+
+    expect(getStockInfo).toBeCalledWith(expect.objectContaining({
+        symbol: 'GOOG',
+        type: 'D'
+    }));
 
     expect(container.querySelector('.company-stock-chart')).not.toBeEmptyDOMElement();
 
     await waitFor(() => {
         expect(container.querySelector('.company-stock-chart canvas')).not.toBe(null);
         expect(container.querySelector('.company-stock-chart .chart-interval')).not.toBeEmptyDOMElement();
+    });
+});
+
+test('CompanyStockChart - displays error if getStockInfo call fails', async () => {
+    const { container, spies } = setup({
+        symbol: 'GOOG',
+        getStockInfo: () => Promise.reject({})
+    });
+
+    await waitFor(() => {
+        expect(container.querySelector('.company-stock-chart .error')).not.toBe(null);
+        expect(container.querySelector('.company-stock-chart .error')?.textContent).toEqual(ERROR);
     });
 });
