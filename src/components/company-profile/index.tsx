@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import './style.css';
-import { LOADING, ERROR, COMPANY_PROFILE, NO_COMPANY_SELECTED } from '../../language/constants';
+import { LOADING, ERROR, COMPANY_PROFILE } from '../../language/constants';
 
 type Props = {
     symbol: string,
