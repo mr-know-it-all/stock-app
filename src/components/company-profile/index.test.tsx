@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import CompanyProfile from '.';
-import { COMPANY_PROFILE, NO_COMPANY_SELECTED, ERROR } from '../../language/constants';
+import { COMPANY_PROFILE, ERROR } from '../../language/constants';
 
 type SetupProps = {
     [key: string]: string | (() => Promise<never> | Promise<any>)
@@ -26,8 +26,7 @@ export const setup = (props?: SetupProps) => {
 test('CompanyProfile - renders component with no selected company symbol', () => {
     const { container, spies } = setup();
 
-    expect(container.querySelector('.company-profile-empty')).not.toBeEmptyDOMElement();
-    expect(container.querySelector('.company-profile-empty')?.textContent).toEqual(NO_COMPANY_SELECTED);
+    expect(container.querySelector('.company-profile')).toBeEmptyDOMElement();
     expect(spies.getCompanyProfile).toHaveBeenCalledTimes(0);
 });
 

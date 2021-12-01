@@ -31,24 +31,21 @@ const CompanyProfile = ({ symbol, getCompanyProfile }: Props) => {
     }, [symbol, getCompanyProfile]);
 
     if(error) return <p className="error">{ERROR}</p>;
-
     if(loading) return <p className="loading">{LOADING}</p>;
 
-    if(!loading && companyProfile) {
-        return (
-            <article className="company-profile">
+    return (
+        <article className="company-profile">
+            {!loading && companyProfile && <>
                 <h3>{COMPANY_PROFILE}</h3>
                 <div className="company-profile-data">
-                    <div className="company-profile-item">{companyProfile.description}</div>
-                    <div className="company-profile-item">{companyProfile.country}</div>
-                    <div className="company-profile-item">{companyProfile.state}</div>
-                    <div className="company-profile-item">{companyProfile.city}</div>
+                    <div className="company-profile-item">{companyProfile.description || ''}</div>
+                    <div className="company-profile-item">{companyProfile.country || ''}</div>
+                    <div className="company-profile-item">{companyProfile.state || ''}</div>
+                    <div className="company-profile-item">{companyProfile.city || ''}</div>
                 </div>
-            </article>
-        );
-    }
-
-    return <p className="company-profile-empty">{NO_COMPANY_SELECTED}</p>;
+            </>}
+        </article>
+    );
 }
 
 export default CompanyProfile;
