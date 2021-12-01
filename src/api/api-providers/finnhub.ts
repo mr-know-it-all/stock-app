@@ -8,7 +8,7 @@ const query = ({ term }: QueryRequestType): Promise<QueryResponseType> => {
             if(response.ok) {
                 const data = await response.json().catch(reject);
                 resolve(data);
-            }
+            } else reject(response);
         }).catch(reject);
     });
 };
@@ -33,7 +33,7 @@ const companyProfile = ({ symbol }: CompanyProfileRequestType): Promise<CompanyP
                         sector: data.finnhubIndustry
                     }
                 });
-            }
+            } else reject(response);
         }).catch(reject);
     });
 };
@@ -93,7 +93,7 @@ const stockInfo = ({ symbol, from, to, type = 'D' }: StockInfoRequestType): Prom
                 const data = await response.json().catch(reject);
                 const transformedData = stockInfoAdaptor(data);
                 resolve(transformedData);
-            }
+            } else reject(response);
         }).catch(reject);
     });
 };
