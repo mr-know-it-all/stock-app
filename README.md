@@ -18,7 +18,7 @@ Global types are declared under /types directory. As long as the request/respons
 - Default [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit tests
 - [react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2) 
 - [lodash.debounce](https://lodash.com/docs/4.17.15#debounce)
-- Data prvider [Finnhub](https://finnhub.io/)
+- [Finnhub](https://finnhub.io/) data service
 
 ## How to use
 After the usual
