@@ -7,7 +7,7 @@ This is a sketch of a stock web application.
 - the user can select a custom interval for the data and also interact with the chart, hide metrics, display average value
 - the stock data is displayed with daily intervals
 
-##NFRs
+## NFRs
 - data fetching depends on the data provider
 - companies query and company profile data could be, in theory, cached client side (with something like React Query), or server side, using a proxy server in front of the data provider
 - the company search functionality has a 300ms debounce. Even with premium paid data providers this should remain in place. The current data provider (finnhub), at least for the free access, is not a fast one.
