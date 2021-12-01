@@ -4,7 +4,8 @@ This is a sketch of a stock web application.
 ## Features
 - the user can query companies via a text input, the results will appear below the input (finnhub provider matches at least company symbol and company name)
 - after selecting a company, some information about it is displayed as well as stock data for a default interval on a chart
-- the user can select a custom interval for the data and also interact with the chart
+- the user can select a custom interval for the data and also interact with the chart, hide metrics, display average value
+- the stock data is displayed with daily intervals
 
 ## Design considerations
 The only page implemented is Dashboard page. It sends selected company symbol (company stock indentifier) and api methods to it's subcomponents: SearchCompanies, CompanyProfile and CompanyStockChart. These subcomponents could be reused across a larger application.
