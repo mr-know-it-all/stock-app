@@ -18,7 +18,7 @@ const Interval = ({
     const dateTo = (new Date(to)).toISOString().substr(0, 10);
 
     return (
-        <fieldset className="chart-component-interval">
+        <fieldset className="chart-interval">
             <label htmlFor="interval-from">{FROM}</label>
             <input type="date" id="interval-from" value={dateFrom} onChange={
                 event => {
@@ -33,7 +33,7 @@ const Interval = ({
                     updateInterval('to', value);
                 }
             } />
-            <button onClick={setCustomInterval}>Set interval</button>
+            <button id="interval-submit" onClick={setCustomInterval}>Set interval</button>
         </fieldset>
     )
 };

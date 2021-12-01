@@ -1,4 +1,4 @@
-.chart-component-interval {
+.chart-interval {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,10 +6,10 @@
     outline: none;
 }
 
-.chart-component-interval > label {
+.chart-interval > label {
     padding: 0 10px;
 }
 
-.chart-component-interval > button {
+.chart-interval > button {
     margin: 0 10px;
 }
